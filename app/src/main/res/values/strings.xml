@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">主催者・幹事ヘルパー</string>
+    <string name="event_organizer">主催者</string>
+    <string name="party_organizer">幹事</string>
+    <string name="start_party">新しい割り勘を始める</string>
+    <string name="point_divider">・</string>
+    <string name="number_of_people">$n 人</string>
+    <string name="confirm_attendance">出席確認する</string>
+    <string name="attend">出席</string>
+    <string name="no_attend">未出席</string>
+    <string name="attended">出席済</string>
+    <string name="number_of_participants">参加人数</string>
+    <string name="add_member">メンバ追加する</string>
+    <string name="remaining">残り</string>
+    <string name="number_of_people_unit">人</string>
+    <string name="confirm_collection">集金する</string>
+    <string name="collect_money">集金</string>
+    <string name="not_collect_money">未集金</string>
+    <string name="collected_money">集金済</string>
+    <string name="total_price">合計金額</string>
+    <string name="whole">全員</string>
+    <string name="event_setting">イベント設定</string>
+    <string name="event_name">イベント名</string>
+    <string name="event_date">日付</string>
+    <string name="event_venue_name">場所</string>
+    <string name="confirm">確定する</string>
+
+    <string name="back">戻る</string>
+    <string name="event_list">イベント一覧</string>
+    <string name="event">イベント</string>
+    <string name="create_event">イベントを作成する</string>
+    <string name="choose_event_date">日付を指定する</string>
+    <string name="choose_event_venue">場所を指定する</string>
+    <string name="edit_event">イベントを編集する</string>
+    <string name="edit_event_participant">イベント参加者を編集する</string>
+    <string name="edit_event_fee">イベント参加費を編集する</string>
+</resources>
