@@ -5,7 +5,6 @@ import com.u1tramarinet.organizerapp.domain.core.Event
 import com.u1tramarinet.organizerapp.domain.core.Venue
 import com.u1tramarinet.organizerapp.domain.repository.EventRepository
 import io.github.u1tramarinet.androidlogutility.LogUtils
-import io.github.u1tramarinet.androidlogutility.libs.LogUtils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow

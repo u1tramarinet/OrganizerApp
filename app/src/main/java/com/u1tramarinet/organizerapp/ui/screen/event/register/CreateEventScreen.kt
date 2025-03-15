@@ -18,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -247,7 +248,7 @@ private fun CommonDivider(
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         Spacer(modifier = Modifier.height(marginTop))
-        Divider(modifier = Modifier.fillMaxWidth())
+        HorizontalDivider(modifier = Modifier.fillMaxWidth())
         Spacer(modifier = Modifier.height(marginBottom))
     }
 }

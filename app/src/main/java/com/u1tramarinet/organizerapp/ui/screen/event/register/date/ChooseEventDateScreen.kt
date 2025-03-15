@@ -48,11 +48,6 @@ fun ChooseEventDateScreen(
         ) {
             DatePicker(
                 state = datePickerState,
-                dateFormatter = DatePickerFormatter(
-                    yearSelectionSkeleton = "yyyy年MM月",
-                    selectedDateSkeleton = "yyyy年MM月dd日",
-                    selectedDateDescriptionSkeleton = "yyyy年MM月dd日 (E)"
-                ),
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(
