@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.u1tramarinet.organizerapp"
+    namespace = "io.github.u1tramarinet.organizerapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.u1tramarinet.organizerapp"
+        applicationId = "io.github.u1tramarinet.organizerapp"
         minSdk = 28
         targetSdk = 36
         versionCode = 1
