@@ -1,4 +1,4 @@
-package io.github.u1tramarinet.organizerapp.domain
+package io.github.u1tramarinet.organizerapp.domain.event
 
 import io.github.u1tramarinet.organizerapp.di.DefaultDispatcher
 import io.github.u1tramarinet.organizerapp.domain.core.Event
