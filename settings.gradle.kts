@@ -1,3 +1,5 @@
+import java.util.Properties
+
 pluginManagement {
     repositories {
         google()
@@ -13,6 +15,16 @@ dependencyResolutionManagement {
         mavenCentral()
         maven {
             setUrl("https://jitpack.io")
+        }
+        maven {
+            url = uri("https://maven.pkg.github.com/u1tramarinet/AndroidCore")
+            credentials {
+                val localProperties = Properties()
+                localProperties.load(file("local.properties").inputStream())
+
+                username = localProperties.getProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = localProperties.getProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
         }
     }
 }
