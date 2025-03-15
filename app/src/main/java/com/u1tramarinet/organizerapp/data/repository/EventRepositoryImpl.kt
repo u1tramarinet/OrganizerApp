@@ -39,7 +39,7 @@ class EventRepositoryImpl @Inject constructor(
         LogUtils.funIn("event=$event")
         return withContext(dispatcher) {
             if (event.venue is Venue.Registered || event.venue == null) {
-                val venue = event.venue as Venue.Registered?
+                val venue = event.venue
                 events.add(
                     Event.Registered(
                         id = latestIndex,
