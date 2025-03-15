@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.u1tramarinet.organizerapp.R
-import com.u1tramarinet.organizerapp.domain.EventSummary
+import com.u1tramarinet.organizerapp.domain.core.Event
 import com.u1tramarinet.organizerapp.ui.OrganizerAppBar
 import com.u1tramarinet.organizerapp.ui.ScreenState
 import com.u1tramarinet.organizerapp.ui.util.DateUtil
@@ -88,7 +88,7 @@ private fun Empty() {
 
 @Composable
 private fun EventSummaryItem(
-    eventSummary: EventSummary,
+    eventSummary: Event.Summary,
     onClick: (Int) -> Unit,
 ) {
     Column(modifier = Modifier
@@ -103,11 +103,11 @@ private fun EventSummaryItem(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Start,
         )
-        Text(
-            text = DateUtil.formatDate(eventSummary.date),
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.End,
-        )
+//        Text(
+//            text = DateUtil.formatDate(eventSummary.schedule),
+//            modifier = Modifier.fillMaxWidth(),
+//            textAlign = TextAlign.End,
+//        )
     }
 }
 

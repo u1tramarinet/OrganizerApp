@@ -1,22 +1,22 @@
 package com.u1tramarinet.organizerapp.domain
 
 import com.u1tramarinet.organizerapp.di.DefaultDispatcher
-import com.u1tramarinet.organizerapp.domain.core.Event
-import com.u1tramarinet.organizerapp.domain.repository.EventRepository
+import com.u1tramarinet.organizerapp.domain.core.Venue
+import com.u1tramarinet.organizerapp.domain.repository.VenueRepository
 import io.github.u1tramarinet.androidlogutility.LogUtils
 import io.github.u1tramarinet.androidlogutility.LogUtils.withFunEnd
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class RegisterEventUseCase @Inject constructor(
-    private val repository: EventRepository,
+class RegisterVenueUseCase @Inject constructor(
+    private val repository: VenueRepository,
     @DefaultDispatcher private val dispatcher: CoroutineDispatcher,
 ) {
-    suspend operator fun invoke(draft: Event.Draft): Boolean {
-        LogUtils.funIn()
+    suspend fun invoke(venue: Venue.Draft): Boolean {
+        LogUtils.funIn("venue=$venue")
         return withContext(dispatcher) {
-            repository.register(draft)
+            repository.register(venue)
         }.withFunEnd()
     }
 }

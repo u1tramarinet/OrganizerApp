@@ -5,6 +5,7 @@ package com.u1tramarinet.organizerapp.ui
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,11 +19,13 @@ import androidx.navigation.compose.NavHost
 import com.u1tramarinet.organizerapp.R
 import com.u1tramarinet.organizerapp.ui.navigation.AppNavController
 import com.u1tramarinet.organizerapp.ui.navigation.rememberAppNavController
-import com.u1tramarinet.organizerapp.ui.screen.event.create.createEventScreen
-import com.u1tramarinet.organizerapp.ui.screen.event.create.date.ChooseEventDateDestination
-import com.u1tramarinet.organizerapp.ui.screen.event.create.date.chooseEventDateScreen
-import com.u1tramarinet.organizerapp.ui.screen.event.create.date.navigateToChooseEventDate
-import com.u1tramarinet.organizerapp.ui.screen.event.create.navigateToCreateEvent
+import com.u1tramarinet.organizerapp.ui.screen.event.register.createEventScreen
+import com.u1tramarinet.organizerapp.ui.screen.event.register.date.ChooseEventDateDestination
+import com.u1tramarinet.organizerapp.ui.screen.event.register.date.chooseEventDateScreen
+import com.u1tramarinet.organizerapp.ui.screen.event.register.date.navigateToChooseEventDate
+import com.u1tramarinet.organizerapp.ui.screen.event.register.navigateToCreateEvent
+import com.u1tramarinet.organizerapp.ui.screen.event.register.venue.ChooseEventVenueDestination
+import com.u1tramarinet.organizerapp.ui.screen.event.register.venue.chooseEventVenue
 import com.u1tramarinet.organizerapp.ui.screen.event.list.eventList
 import com.u1tramarinet.organizerapp.ui.screen.event.list.eventListScreen
 import java.time.LocalDateTime
@@ -48,11 +51,21 @@ fun OrganizerApp(
             onDateClicked = { dateTime ->
                 appNavController.navigateToChooseEventDate(dateTime)
             },
-            onDateSelected = { appNavController.getResult<LocalDateTime>(ChooseEventDateDestination.key_selected_date) }
+            onDateSelected = { appNavController.getResult<LocalDateTime>(ChooseEventDateDestination.key_selected_date) },
+            onVenueSelected = { appNavController.getResult<Int>(ChooseEventVenueDestination.key_selected_venue) }
         )
         chooseEventDateScreen(
             onChosen = { dateTime ->
                 appNavController.setResult(ChooseEventDateDestination.key_selected_date, dateTime)
+                appNavController.navController.popBackStack()
+            }
+        )
+        chooseEventVenue(
+            onChosen = { venueId ->
+                appNavController.setResult(ChooseEventVenueDestination.key_selected_venue, venueId)
+                appNavController.navController.popBackStack()
+            },
+            onCancel = {
                 appNavController.navController.popBackStack()
             }
         )
@@ -73,7 +86,7 @@ fun OrganizerAppBar(
             if (canNavigateBack) {
                 IconButton(onClick = navigateUp) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(id = R.string.back),
                     )
 
