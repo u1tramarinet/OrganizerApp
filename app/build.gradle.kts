@@ -1,7 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    alias(libs.plugins.agp)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
 
@@ -12,7 +13,7 @@ android {
     defaultConfig {
         applicationId = "com.u1tramarinet.organizerapp"
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -39,9 +40,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.7"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -57,11 +55,10 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.bundles.navigation)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
     implementation(libs.bundles.room)
     annotationProcessor(libs.room.compiler)
-    //noinspection KaptUsageInsteadOfKsp
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
@@ -79,8 +76,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-}
-
-kapt {
-    correctErrorTypes = true
 }

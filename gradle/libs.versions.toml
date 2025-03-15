@@ -1,4 +1,7 @@
 [versions]
+agp = "8.9.0"
+kotlin = "2.0.21"
+ksp = "2.0.21-1.0.27"
 activity-compose = "1.10.1"
 android-hilt-utility = "0.0.1"
 android-log-utility = "0.0.4"
@@ -53,6 +56,10 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 
 [plugins]
+agp = { id = "com.android.application", version.ref = "agp" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 [bundles]
