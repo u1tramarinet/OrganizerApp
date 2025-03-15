@@ -34,4 +34,10 @@
     <string name="edit_event">イベントを編集する</string>
     <string name="edit_event_participant">イベント参加者を編集する</string>
     <string name="edit_event_fee">イベント参加費を編集する</string>
+
+    <string name="split_bill">割り勘する</string>
+    <string name="take_attendance">出欠確認する</string>
+    <string name="recent_events">最近のイベント</string>
+    <string name="recent_events_empty_message">最近の出欠確認や割り勘がここに表示されます</string>
+    <string name="admob_app_id">ca-app-pub-6212539671830815~2866670639</string>
 </resources>

@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import io.github.u1tramarinet.organizerapp.R
-import io.github.u1tramarinet.organizerapp.ui.OrganizerAppBar
+import io.github.u1tramarinet.organizerapp.ui.common.OrganizerAppBar
 import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterial3Api::class)

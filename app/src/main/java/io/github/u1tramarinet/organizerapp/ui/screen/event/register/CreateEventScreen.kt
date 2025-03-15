@@ -38,8 +38,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import io.github.u1tramarinet.organizerapp.R
-import io.github.u1tramarinet.organizerapp.ui.OrganizerAppBar
 import io.github.u1tramarinet.organizerapp.ui.common.LoadingOverlay
+import io.github.u1tramarinet.organizerapp.ui.common.OrganizerAppBar
 import java.time.LocalDateTime
 
 @Composable

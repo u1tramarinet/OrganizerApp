@@ -1,6 +1,9 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kotlin)
+    kotlin("plugin.serialization") version libs.versions.kotlin
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
@@ -18,6 +21,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val localProperties = Properties()
+        localProperties.load(project.rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "ADMOB_AD_UNIT_ID", "\"${localProperties.getProperty("admob.ad_unit_id")}\"")
     }
 
     buildTypes {
@@ -69,6 +76,9 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.android.log.utility)
     implementation(libs.android.hilt.utility)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.play.services.ads)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
     androidTestImplementation(platform(libs.compose.bom))

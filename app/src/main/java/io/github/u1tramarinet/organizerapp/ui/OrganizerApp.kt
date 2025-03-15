@@ -2,22 +2,16 @@
 
 package io.github.u1tramarinet.organizerapp.ui
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
-import io.github.u1tramarinet.organizerapp.R
+import androidx.navigation.compose.composable
+import io.github.u1tramarinet.organizerapp.ui.OrganizerAppRoute.Top
 import io.github.u1tramarinet.organizerapp.ui.navigation.AppNavController
 import io.github.u1tramarinet.organizerapp.ui.navigation.rememberAppNavController
+import io.github.u1tramarinet.organizerapp.ui.screen.event.list.eventListScreen
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.createEventScreen
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.date.ChooseEventDateDestination
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.date.chooseEventDateScreen
@@ -25,20 +19,23 @@ import io.github.u1tramarinet.organizerapp.ui.screen.event.register.date.navigat
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.navigateToCreateEvent
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.venue.ChooseEventVenueDestination
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.venue.chooseEventVenue
-import io.github.u1tramarinet.organizerapp.ui.screen.event.list.eventList
-import io.github.u1tramarinet.organizerapp.ui.screen.event.list.eventListScreen
+import io.github.u1tramarinet.organizerapp.ui.screen.top.TopScreen
+import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
 @Composable
 fun OrganizerApp(
     appNavController: AppNavController = rememberAppNavController(),
 ) {
-    val initialDestination = OrganizerAppDestinations.eventList()
+    val initialDestination = Top
     NavHost(
         navController = appNavController.navController,
-        startDestination = initialDestination.route(),
+        startDestination = initialDestination,
         modifier = Modifier.fillMaxSize(),
     ) {
+        composable<Top> {
+            TopScreen()
+        }
         eventListScreen(
             onNavigateToCreateEvent = {
                 appNavController.navigateToCreateEvent()
@@ -71,28 +68,10 @@ fun OrganizerApp(
     }
 }
 
-@Composable
-fun OrganizerAppBar(
-    modifier: Modifier = Modifier,
-    @StringRes title: Int,
-    canNavigateBack: Boolean = false,
-    navigateUp: () -> Unit = {},
-) {
-    TopAppBar(
-        title = { Text(text = stringResource(id = title)) },
-        modifier = modifier,
-        navigationIcon = {
-            if (canNavigateBack) {
-                IconButton(onClick = navigateUp) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(id = R.string.back),
-                    )
-
-                }
-            }
-        }
-    )
+@Serializable
+sealed class OrganizerAppRoute(val path: String) {
+    @Serializable
+    object Top : OrganizerAppRoute("top")
 }
 
 object OrganizerAppDestinations

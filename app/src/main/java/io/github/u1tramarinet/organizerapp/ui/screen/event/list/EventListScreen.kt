@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import io.github.u1tramarinet.organizerapp.R
 import io.github.u1tramarinet.organizerapp.domain.core.Event
-import io.github.u1tramarinet.organizerapp.ui.OrganizerAppBar
 import io.github.u1tramarinet.organizerapp.ui.ScreenState
+import io.github.u1tramarinet.organizerapp.ui.common.OrganizerAppBar
 
 @Composable
 fun EventListScreen(
@@ -90,12 +90,13 @@ private fun EventSummaryItem(
     eventSummary: Event.Summary,
     onClick: (Int) -> Unit,
 ) {
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .clickable {
-            onClick.invoke(eventSummary.id)
-        }
-        .padding(16.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                onClick.invoke(eventSummary.id)
+            }
+            .padding(16.dp)
     ) {
         Text(
             text = eventSummary.title,

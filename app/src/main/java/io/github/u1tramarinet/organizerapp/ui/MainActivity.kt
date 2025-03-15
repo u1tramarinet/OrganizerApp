@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.u1tramarinet.organizerapp.ui.theme.OrganizerAppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -12,7 +13,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            OrganizerApp()
+            OrganizerAppTheme {
+                OrganizerApp()
+            }
         }
     }
 }
