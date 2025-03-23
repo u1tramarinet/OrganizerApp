@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -29,8 +28,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.u1tramarinet.organizerapp.BuildConfig
 import io.github.u1tramarinet.organizerapp.R
 import io.github.u1tramarinet.organizerapp.domain.event.entity.Event2
+import io.github.u1tramarinet.organizerapp.ui.OrganizerAppRoute
+import io.github.u1tramarinet.organizerapp.ui.common.ActionButton
 import io.github.u1tramarinet.organizerapp.ui.common.AdBanner
 import io.github.u1tramarinet.organizerapp.ui.common.OrganizerAppBar
 import io.github.u1tramarinet.organizerapp.ui.common.OrganizerScaffold
@@ -39,14 +41,18 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 @Composable
-fun TopScreen(modifier: Modifier = Modifier) {
-    TopScreenContent(modifier = modifier)
+fun TopScreen(
+    modifier: Modifier = Modifier,
+    onNavigate: (OrganizerAppRoute) -> Unit,
+) {
+    TopScreenContent(modifier = modifier, onNavigate = onNavigate)
 }
 
 @Composable
 private fun TopScreenContent(
     modifier: Modifier = Modifier,
     state: TopScreenState = TopScreenState(),
+    onNavigate: (OrganizerAppRoute) -> Unit = {},
 ) {
     OrganizerScaffold(
         modifier = modifier,
@@ -62,29 +68,30 @@ private fun TopScreenContent(
                 onClick = {},
             )
             Spacer(modifier = Modifier.weight(0.15f))
-            TopActionButton(
+            ActionButton(
                 modifier = Modifier.fillMaxWidth(),
                 enabled = state.recentEvents.isNotEmpty(),
                 text = stringResource(R.string.event_list),
                 onClick = {},
             )
             HorizontalDivider(modifier = Modifier.padding(vertical = 32.dp))
-            TopActionButton(
+            ActionButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.take_attendance),
                 onClick = {},
             )
             Spacer(modifier = Modifier.height(32.dp))
-            TopActionButton(
+            ActionButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.split_bill),
-                onClick = {},
+                onClick = { onNavigate(OrganizerAppRoute.Dutch) },
             )
             Box(modifier = Modifier.weight(0.1f)) {
                 AdBanner(
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter),
+                    adUnitId = BuildConfig.ADMOB_AD_UNIT_ID,
                 )
             }
         }
@@ -145,25 +152,6 @@ private fun RecentEvents(
                 .padding(horizontal = 8.dp),
             text = stringResource(R.string.recent_events),
             style = MaterialTheme.typography.labelLarge,
-        )
-    }
-}
-
-@Composable
-private fun TopActionButton(
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    text: String,
-    onClick: () -> Unit
-) {
-    Button(
-        modifier = modifier.fillMaxWidth(),
-        enabled = enabled,
-        onClick = onClick,
-    ) {
-        Text(
-            modifier = Modifier.padding(vertical = 8.dp),
-            text = text,
         )
     }
 }

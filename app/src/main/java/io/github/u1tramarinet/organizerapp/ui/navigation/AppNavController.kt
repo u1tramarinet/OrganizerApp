@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import io.github.u1tramarinet.organizerapp.ui.OrganizerAppRoute
 
 class AppNavController(
     val navController: NavHostController,
@@ -13,6 +14,10 @@ class AppNavController(
     val currentRoute: String? get() = navController.currentDestination?.route
 
     val canNavigateBack: Boolean get() = navController.previousBackStackEntry != null
+
+    fun navigate(route: OrganizerAppRoute) {
+        navController.navigate(route)
+    }
 
     fun navigateUp() {
         navController.navigateUp()

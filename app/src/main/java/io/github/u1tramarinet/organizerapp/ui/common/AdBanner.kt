@@ -12,10 +12,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import io.github.u1tramarinet.organizerapp.BuildConfig
 
 @Composable
-fun AdBanner(modifier: Modifier = Modifier) {
+fun AdBanner(modifier: Modifier = Modifier, adUnitId: String) {
     val adRequest = remember { AdRequest.Builder().build() }
     AndroidView(
         modifier = modifier,
@@ -23,7 +22,7 @@ fun AdBanner(modifier: Modifier = Modifier) {
             val adSize = context.adSize
             val view = AdView(context)
             view.setAdSize(adSize)
-            view.adUnitId = BuildConfig.ADMOB_AD_UNIT_ID
+            view.adUnitId = adUnitId
             view.loadAd(adRequest)
             view
         }

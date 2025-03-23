@@ -8,9 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import io.github.u1tramarinet.organizerapp.ui.OrganizerAppRoute.Dutch
 import io.github.u1tramarinet.organizerapp.ui.OrganizerAppRoute.Top
 import io.github.u1tramarinet.organizerapp.ui.navigation.AppNavController
 import io.github.u1tramarinet.organizerapp.ui.navigation.rememberAppNavController
+import io.github.u1tramarinet.organizerapp.ui.screen.dutch.DutchScreen
 import io.github.u1tramarinet.organizerapp.ui.screen.event.list.eventListScreen
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.createEventScreen
 import io.github.u1tramarinet.organizerapp.ui.screen.event.register.date.ChooseEventDateDestination
@@ -34,7 +36,16 @@ fun OrganizerApp(
         modifier = Modifier.fillMaxSize(),
     ) {
         composable<Top> {
-            TopScreen()
+            TopScreen(
+                onNavigate = { route ->
+                    appNavController.navigate(route)
+                },
+            )
+        }
+        composable<Dutch> {
+            DutchScreen {
+                appNavController.navigateUp()
+            }
         }
         eventListScreen(
             onNavigateToCreateEvent = {
@@ -72,6 +83,9 @@ fun OrganizerApp(
 sealed class OrganizerAppRoute(val path: String) {
     @Serializable
     object Top : OrganizerAppRoute("top")
+
+    @Serializable
+    object Dutch : OrganizerAppRoute("dutch")
 }
 
 object OrganizerAppDestinations
